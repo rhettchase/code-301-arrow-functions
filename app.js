@@ -203,18 +203,25 @@ Student.prototype.scope = function() {
   console.log(this);
 };
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scope();
+// DONE: Uncomment the following line of code to see the output in the browser console
+joe.scope();
 
 Student.prototype.scopeArrow = () => console.log(this);
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scopeArrow();
+// DONE: Uncomment the following line of code to see the output in the browser console
+joe.scopeArrow();
 
-// TODO: Write a COMMENT below to answer the following questions.
+// DONE: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+// "this" refers to the object that called the function. 'joe' is the object calling the 'scope' function, so "this" will refer to the 'joe' object
+// output: Student { name: 'Joe', age: 25, hometown: 'City' }
+
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+// because arrow functions do not have their own 'this' binding. instead, they inherit the 'this' value from the surrounding scope (lexical scoping)
+// since scopeArrow function is defined within the prototype of `Student` (in outer scope), 'this' inside 'scopeArrow' will refer to the 'this' value of that outer scope -> often the global object ('window' in a browser environment or 'global' in Node.js)
+// Output: [Object: Window]
+
 // 3. Explain why "this" is different when an arrow function is used.
-//
+// how arrow functions handle the binding of 'this'
+// regular function expressions: value of 'this' is dynamically scoped, which means it's determined by how the function is called. When a function is called as a method of an object, `this` refers to the object the method is called on. 
+// Arrow functions: do not have their own `this` binding. Instead, they inherit the `this` value from the surrounding (lexical) scope at the time they are defined. value of `this` inside an arrow function is not influenced by how the function is called but rather by where the function is written in the code.
